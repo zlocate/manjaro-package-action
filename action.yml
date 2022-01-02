@@ -66,8 +66,10 @@ runs:
         githubToken: ${{ github.token }}
         setup: |
           mkdir -p "${PWD}/artifacts"
+          mkdir -p "${PWD}/build"
         dockerRunArgs: |
           --volume "${PWD}/artifacts:/artifacts"
+          --volume "${PWD}/build:/build:cached"
           --cap-add=SYS_ADMIN
         shell: /bin/sh
         install: |
