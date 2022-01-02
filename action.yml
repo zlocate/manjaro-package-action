@@ -84,6 +84,13 @@ runs:
           pacman-mirrors --geoip
         run: |
           pacman -Syy
+          case "${{ inputs.docker_arch }}" in
+            amd64)
+              pacman --noconfirm -U https://archlinux.org/packages/extra/x86_64/cmake/download
+              ;;
+            aarch64)
+              ;;
+          esac
           chown builder $PWD
           sudo -u builder makepkg -fsAc --noconfirm --noprogressbar -p ${{ inputs.pkgbuild }}
           cp *.pkg.tar.zst* /artifacts/
