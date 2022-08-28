@@ -71,6 +71,7 @@ runs:
           --volume "${PWD}/artifacts:/artifacts"
           --volume "${PWD}/build:/build:cached"
           --cap-add=SYS_ADMIN
+          --security-opt seccomp=unconfined
         shell: /bin/sh
         install: |
           echo ${{ inputs.gpg_keyid }} >>additional_gpg
