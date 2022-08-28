@@ -82,6 +82,7 @@ runs:
 
           sed -i '/^\[core\]/i \[manjaro-sway\]\nSigLevel = Optional TrustAll\nServer = https://packages.manjaro-sway.download/$arch\n' /etc/pacman.conf
           pacman-mirrors --geoip
+          sudo pacman -Sy --noconfirm --needed base-devel
         run: |
           pacman -Syy
           case "${{ inputs.docker_arch }}" in
