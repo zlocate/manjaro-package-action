@@ -118,7 +118,7 @@ runs:
             ./artifacts/${{ steps.filename.outputs.name }} ./artifacts/${{ steps.filename.outputs.name }}.sig
     - name: dispatch
       if: ${{ env.BUILD == 'true' }}
-      uses: peter-evans/repository-dispatch@v1
+      uses: peter-evans/repository-dispatch@v2
       with:
         token: ${{ inputs.dispatch-token }}
         repository: manjaro-sway/packages
