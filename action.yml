@@ -37,8 +37,8 @@ runs:
     - id: info
       shell: bash
       run: |
-        echo "::set-output name=archs::$(cat ${{ inputs.pkgbuild }} | grep arch= | sed -e 's/^arch=(\(.*\))/\1/')"
-        VERSION=$(cat ${{ inputs.pkgbuild }} | grep pkgver= | sed -e 's/^pkgver=//' | awk '{print $1}')-$(cat ${{ inputs.pkgbuild }} | grep pkgrel= | sed -e 's/^pkgrel=//' | awk '{print $1}')
+        echo "::set-output name=archs::$(cat ${{ inputs.pkgbuild }} | grep ^arch= | sed -e 's/^arch=(\(.*\))/\1/')"
+        VERSION=$(cat ${{ inputs.pkgbuild }} | grep ^pkgver= | sed -e 's/^pkgver=//' | awk '{print $1}')-$(cat ${{ inputs.pkgbuild }} | grep ^pkgrel= | sed -e 's/^pkgrel=//' | awk '{print $1}')
         echo "::set-output name=version::${VERSION}"
     - name: x86_64-build
       shell: bash
