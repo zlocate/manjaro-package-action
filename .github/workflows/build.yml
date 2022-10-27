@@ -11,13 +11,12 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        pkgbuild: ["PKGBUILD.any", "PKGBUILD.multi"]
-        archlinux_arch: [aarch64, x86_64]
+        pkgbuild: ["PKGBUILD.any"]
+        archlinux_arch: [x86_64]
         include:
-          - archlinux_arch: aarch64
-            docker_arch: aarch64
           - archlinux_arch: x86_64
             docker_arch: amd64
+            sign_pkg: "false"
     steps:
       - name: check out repo for action code
         uses: actions/checkout@v3
